@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMT</title>
+    <style>
+        body {
+            font-family: Impact, sans-serif;
+            overflow: hidden;
+            background-color: black;
+            color: green;
+            font-size: 24px;
+            white-space: nowrap;
+        }
+        #output {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+    <div id="output"></div>
+    <script>
+        const output = document.getElementById('output');
+        let speed = 100; // initial speed
+        let count = 0;
+
+        function typeRandomNumber() {
+            const number = Math.random() < 0.5 ? '0' : '1';
+            output.innerHTML += number;
+            count++;
+
+            if (number === '0') {
+                speed *= 0.9; // increase speed for 0
+            } else {
+                speed *= 0.5; // double speed for 1
+            }
+
+            if (count % 8 === 0) {
+                output.innerHTML += ' '; // add space every 8 numbers
+            }
+
+            setTimeout(typeRandomNumber, speed);
+        }
+
+        typeRandomNumber();
+    </script>
+</body>
+</html>
